@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class MainPageTest {
     //loginPage mainPage = new MainPage();
     LoginPage lPage = new LoginPage();
+    ProductsPage products = new ProductsPage();
 
 
     @BeforeClass
@@ -35,13 +36,11 @@ public class MainPageTest {
 
     @Test
     public void products() throws InterruptedException {
-       // $(".title").shouldHave(attribute("value", "Selenium"));
-        $(".title").shouldHave(text("PRODUCTS"));
-       // String product_sort_container = "lo";
-        //String product_sort_container1 = "product_sort_container";
-        Select select = new Select($(By.className("product_sort_container")));
+        //Check for successful login and Sort products by low to High
+        $(products.product).shouldHave(text("PRODUCTS"));
+        Select select = new Select($(products.sortingOptions));
         select.selectByValue("lohi");
-        Thread.sleep(13000);
+       // Thread.sleep(13000);
     }
 
 
