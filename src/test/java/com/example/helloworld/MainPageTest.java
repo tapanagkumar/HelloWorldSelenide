@@ -1,5 +1,6 @@
 package com.example.helloworld;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
@@ -40,7 +41,10 @@ public class MainPageTest {
         $(products.product).shouldHave(text("PRODUCTS"));
         Select select = new Select($(products.sortingOptions));
         select.selectByValue("lohi");
-       // Thread.sleep(13000);
+        //Thread.sleep(13000);
+        $$(By.className("inventory_list")).should(CollectionCondition.sizeGreaterThan(0));
+        $$(By.className("inventory_item")).get(0).shouldHave(text("Sauce Labs Onesie"));
+        $$(By.className("inventory_item")).get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
 
