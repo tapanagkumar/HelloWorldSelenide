@@ -5,6 +5,9 @@ name: Tests
 
 on:
   workflow_dispatch:
+    schedule:
+      # Runs "At 11:00 on every day-of-week from Monday through Friday"
+      - cron: '0 11 * * 1-5'
 
   push:
     branches: [ "main" ]
