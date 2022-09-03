@@ -29,8 +29,9 @@ public class MainPageTest {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
         Configuration.browser="firefox";
-        Configuration.headless = false;
-        Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
+        //Configuration.holdBrowserOpen = true;
+        //Configuration.br
         //Configuration.remote="http://localhost:4444/wd/hub";
         Map<String, Boolean> options = new HashMap<>();
         //options.put("enableVNC", true);
