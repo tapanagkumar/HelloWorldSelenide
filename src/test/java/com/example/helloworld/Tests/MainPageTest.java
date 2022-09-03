@@ -28,7 +28,6 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
-        //Configuration.browser="firefox";
         Configuration.headless = true;
         //Configuration.remote="http://localhost:4444/wd/hub";
         //Map<String, Boolean> options = new HashMap<>();
