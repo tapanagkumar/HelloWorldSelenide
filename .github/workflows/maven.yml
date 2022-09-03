@@ -35,10 +35,10 @@ jobs:
       run: chmod +x mvnw
 
     - name: Build with Maven and run on firefox
-      run: ./mvnw clean test -Dselenide.browser="firefox"
+      run: ./mvnw clean  -Dselenide.browser="safari" -Dtest="MainPageTest, LoginTests" test
 
     - name: Build with Maven and run on chrome
-      run: ./mvnw clean test -Dselenide.browser="chrome"
+      run: ./mvnw clean  -Dselenide.browser="safari" -Dtest="MainPageTest, LoginTests" test
 
 
 
