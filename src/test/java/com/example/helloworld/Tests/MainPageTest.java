@@ -4,31 +4,26 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.example.helloworld.Pages.LoginPage;
 import com.example.helloworld.Pages.ProductsPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.closeWindow;
+import static com.codeborne.selenide.Selenide.open;
 
-import static com.codeborne.selenide.Condition.*;
-
-import static com.codeborne.selenide.Selenide.*;
-
-public class MainPageTest {
+public abstract class MainPageTest {
     //loginPage mainPage = new MainPage();
-    LoginPage lPage = new LoginPage();
-    ProductsPage products = new ProductsPage();
+    static LoginPage lPage = new LoginPage();
+    static ProductsPage products = new ProductsPage();
 
 
     @BeforeClass
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
-        Configuration.headless = true;
+        Configuration.headless = false;
         //Configuration.remote="http://localhost:4444/wd/hub";
         //Map<String, Boolean> options = new HashMap<>();
         //options.put("enableVNC", true);
@@ -87,4 +82,5 @@ public class MainPageTest {
     public void tearDown() {
         closeWindow();
     }
+
 }
