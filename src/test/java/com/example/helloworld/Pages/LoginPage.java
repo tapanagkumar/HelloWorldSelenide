@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.Pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
