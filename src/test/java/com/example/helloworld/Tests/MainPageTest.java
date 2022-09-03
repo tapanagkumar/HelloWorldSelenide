@@ -47,9 +47,9 @@ public class MainPageTest {
     }
 
     @Test
-    public void productsAvailable() throws InterruptedException {
+    public void productsAvailable() {
         //Check for successful login and Sort products by low to High
-        $(products.productList).shouldHave(text("PRODUCTS"));
+        products.productList.shouldHave(text("PRODUCTS"));
     }
 
     @Test
@@ -62,18 +62,18 @@ public class MainPageTest {
 
     @Test
     public void sortByHigh2Low() {
-            products.sortDropdown.selectOptionByValue("hilo");
-            products.sortList.should(CollectionCondition.sizeGreaterThan(0));
-            products.itemList.get(0).shouldHave(text("Sauce Labs Fleece Jacket"));
-            products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
+        products.sortDropdown.selectOptionByValue("hilo");
+        products.sortList.should(CollectionCondition.sizeGreaterThan(0));
+        products.itemList.get(0).shouldHave(text("Sauce Labs Fleece Jacket"));
+        products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
     @Test
     void sortByA2Z() {
-            products.sortDropdown.selectOptionByValue("az");
-            products.sortList.should(CollectionCondition.sizeGreaterThan(0));
-            products.itemList.get(0).shouldHave(text("Sauce Labs Backpack"));
-            products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
+        products.sortDropdown.selectOptionByValue("az");
+        products.sortList.should(CollectionCondition.sizeGreaterThan(0));
+        products.itemList.get(0).shouldHave(text("Sauce Labs Backpack"));
+        products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MainPageTest {
         products.itemList.get(2).shouldHave(text("Sauce Labs Fleece Jacket"));
     }
     @AfterTest
-    public void teadDown() {
+    public void tearDown() {
         closeWindow();
     }
 }
