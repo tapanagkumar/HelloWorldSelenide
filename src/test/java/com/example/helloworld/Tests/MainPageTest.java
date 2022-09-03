@@ -6,10 +6,13 @@ import com.example.helloworld.Pages.LoginPage;
 import com.example.helloworld.Pages.ProductsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.*;
 
@@ -25,15 +28,17 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
-        Configuration.headless = false;
-        Configuration.holdBrowserOpen = true;
+        Configuration.browser="firefox";
+        Configuration.headless = true;
+        //Configuration.holdBrowserOpen = true;
+        //Configuration.br
         //Configuration.remote="http://localhost:4444/wd/hub";
-        //Map<String, Boolean> options = new HashMap<>();
+        Map<String, Boolean> options = new HashMap<>();
         //options.put("enableVNC", true);
         //options.put("enableVideo", true);
         //options.put("enableLog", true);
-        //Configuration.browserCapabilities = new FirefoxOptions();
-        //Configuration.browserCapabilities.setCapability("selenoid:options", options);
+        Configuration.browserCapabilities = new FirefoxOptions();
+        Configuration.browserCapabilities.setCapability("selenoid:options", options);
     }
 
     @BeforeMethod
