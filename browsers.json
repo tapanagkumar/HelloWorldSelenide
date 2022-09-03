@@ -3,9 +3,46 @@
     "default": "99.0",
     "versions": {
       "99.0": {
-        "image": "selenoid/vnc:chrome_99.0",
-        "port": "4444"
+        "image": "selenoid/chrome:99.0",
+        "port": "4444",
+        "path": "/"
+      },
+      "104.0": {
+        "image": "selenoid/chrome:104.0",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  },
+  "firefox": {
+    "default": "104.0",
+    "versions": {
+      "103.0": {
+        "image": "selenoid/firefox:103.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      },
+      "104.0": {
+        "image": "selenoid/firefox:104.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      }
+    }
+  },
+  "opera": {
+    "default": "88.0",
+    "versions": {
+      "86.0": {
+        "image": "selenoid/opera:86.0",
+        "port": "4444",
+        "path": "/"
+      },
+      "88.0": {
+        "image": "selenoid/opera:88.0",
+        "port": "4444",
+        "path": "/"
       }
     }
   }
 }
+
