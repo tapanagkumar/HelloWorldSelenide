@@ -28,8 +28,10 @@ jobs:
         cache: maven
     - name: Grant execute permission for gradlew
       run: chmod +x mvnw
-    - name: Build with Maven and run on chrome
+
+    - name: Build with Maven and run on firefox
       run: ./mvnw clean test -Dselenide.browser="firefox"
+
     - name: Build with Maven and run on chrome
       run: ./mvnw clean test -Dselenide.browser="chrome"
 
