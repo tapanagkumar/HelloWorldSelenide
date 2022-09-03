@@ -15,17 +15,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Setup Firefox
+      uses: browser-actions/setup-firefox@latest
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+    - uses: actions/checkout@v2
     - name: Set up JDK 11
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v2
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt'
         cache: maven
-    - name: Build with Maven
-      run: ./mvnw clean test -Dselenide.headless=true
-    - uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: test-report
-        path: build/reports/
+    - name: Grant execute permission for gradlew
+      run: chmod +x mvnw
+
+    - name: Build with Maven and run on firefox
+      run: ./mvnw clean test -Dselenide.browser="firefox"
+
+    - name: Build with Maven and run on chrome
+      run: ./mvnw clean test -Dselenide.browser="chrome"
+
