@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Setup Firefox
       uses: browser-actions/setup-firefox@latest
-    - name: Setuo Chrome
+    - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
     - uses: actions/checkout@v2
     - name: Set up JDK 11
