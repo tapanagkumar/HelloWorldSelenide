@@ -1,0 +1,47 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Selenoid" type="docker-deploy" factoryName="docker-image" singleton="false" server-name="Docker">
+    <deployment type="docker-image">
+      <settings>
+        <option name="imageTag" value="aerokube/selenoid:latest-release" />
+        <option name="containerName" value="" />
+        <option name="imagesToPullBeforeRun">
+          <option value="selenoid/chrome:99.0" />
+          <option value="selenoid/chrome:104.0" />
+          <option value="selenoid/firefox:103.0" />
+          <option value="selenoid/firefox:104.0" />
+          <option value="selenoid/opera:86.0" />
+          <option value="selenoid/opera:88.0" />
+          <option value="selenoid/video-recorder:latest-release" />
+          <option value="aerokube/selenoid-ui:latest-release" />
+        </option>
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="4444" />
+              <option name="hostPort" value="4444" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="volumeBindings">
+          <list>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/var/run/docker.sock" />
+              <option name="editable" value="false" />
+              <option name="hostPath" value="/var/run/docker.sock" />
+            </DockerVolumeBindingImpl>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/etc/selenoid/" />
+              <option name="hostPath" value="$PROJECT_DIR$" />
+            </DockerVolumeBindingImpl>
+          </list>
+        </option>
+      </settings>
+    </deployment>
+    <EXTENSION ID="com.intellij.selenium.docker.DockerSelenoidRunConfigurationExtension">
+      <selenoid>
+        <option name="browsersJsonPath" value="$PROJECT_DIR$/browsers.json" />
+      </selenoid>
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>
