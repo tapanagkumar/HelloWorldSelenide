@@ -16,11 +16,8 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-  strategy:
-    fail-fast: false
-    matrix:
-      os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    runs-on: windows-latest
 
     steps:
     - name: Setup Firefox
