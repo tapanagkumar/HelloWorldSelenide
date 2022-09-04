@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Setup Firefox
@@ -39,6 +39,13 @@ jobs:
 
     - name: Build with Maven and run on chrome
       run: ./mvnw clean test -Dtest="MainPageTest, UserLoginTests" -Dselenide.browser="chrome"
+
+    - name: Test Reporter
+    uses: dorny/test-reporter@v1.4.3
+    with:
+    name: Run Tests
+    path: "**/surefire-reports/TEST-*.xml"
+    reporter: java-junit
 
 
 
