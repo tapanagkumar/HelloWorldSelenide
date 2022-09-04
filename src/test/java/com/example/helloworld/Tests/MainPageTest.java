@@ -40,13 +40,13 @@ public class MainPageTest {
         lPage.login.click();
     }
 
-    @Test
+    @Test(priority = 1)
     public void productsAvailable() {
         //Check for successful login and Sort products by low to High
         products.productList.shouldHave(text("PRODUCTS"));
     }
 
-    @Test
+    @Test(priority = 2)
     public void sortByLow2High() {
         products.sortDropdown.selectOptionByValue("lohi");
         products.sortList.should(CollectionCondition.sizeGreaterThan(0));
@@ -54,7 +54,7 @@ public class MainPageTest {
         products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
-    @Test
+    @Test(priority = 3)
     public void sortByHigh2Low() {
         products.sortDropdown.selectOptionByValue("hilo");
         products.sortList.should(CollectionCondition.sizeGreaterThan(0));
@@ -62,7 +62,7 @@ public class MainPageTest {
         products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
-    @Test
+    @Test(priority = 4)
     void sortByA2Z() {
         products.sortDropdown.selectOptionByValue("az");
         products.sortList.should(CollectionCondition.sizeGreaterThan(0));
@@ -70,7 +70,7 @@ public class MainPageTest {
         products.itemList.get(2).shouldHave(text("Sauce Labs Bolt T-Shirt"));
     }
 
-    @Test
+    @Test(priority = 5)
     void sortByB2A() {
         products.sortDropdown.selectOptionByValue("za");
         products.sortList.should(CollectionCondition.sizeGreaterThan(0));
@@ -78,16 +78,6 @@ public class MainPageTest {
         products.itemList.get(2).shouldHave(text("Sauce Labs Fleece Jacket"));
     }
 
-    @Test()
-    public static void lockedUsers(){
-        open("/");
-        lPage.username.sendKeys("locked_out_user");
-        lPage.password.sendKeys("secret_sauce");
-        lPage.login.click();
-        products.productList.shouldNotBe(visible);
-        lPage.epicSadfaceSorryThisUser.shouldHave(text("Epic sadface: Sorry, this user has been locked out.")
-        );
-    }
     @AfterTest
     public void tearDown() {
         closeWindow();
