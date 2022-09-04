@@ -39,10 +39,6 @@ jobs:
     - name: Build with Maven and run on chrome
       run: ./mvnw clean test -Dtest="MainPageTest, UserLoginTests" -Dselenide.browser="chrome"
 
-    - name: Publish Test Report
-      if: ${{ always() }}
-      uses: scacap/action-surefire-report@v1
-
 
 
 
