@@ -21,7 +21,7 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
-        Configuration.headless = false;
+        Configuration.headless = true;
         //Configuration.browser = "chrome";
         //Configuration.remote="http://localhost:4444/wd/hub";
         //Map<String, Boolean> options = new HashMap<>();

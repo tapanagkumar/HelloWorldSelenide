@@ -16,7 +16,7 @@ public class UserLoginTests {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
-        Configuration.headless = false;
+        Configuration.headless = true;
     }
 
     @Test()
