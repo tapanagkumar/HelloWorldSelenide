@@ -4,24 +4,17 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.example.helloworld.Pages.LoginPage;
 import com.example.helloworld.Pages.ProductsPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.codeborne.selenide.Condition.*;
-
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.closeWindow;
+import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
     //loginPage mainPage = new MainPage();
-    LoginPage lPage = new LoginPage();
-    ProductsPage products = new ProductsPage();
+    static LoginPage lPage = new LoginPage();
+    static ProductsPage products = new ProductsPage();
 
 
     @BeforeClass
@@ -29,6 +22,7 @@ public class MainPageTest {
         Configuration.browserSize = "1280x800";
         Configuration.baseUrl = "https://www.saucedemo.com";
         Configuration.headless = true;
+        //Configuration.browser = "chrome";
         //Configuration.remote="http://localhost:4444/wd/hub";
         //Map<String, Boolean> options = new HashMap<>();
         //options.put("enableVNC", true);
@@ -83,8 +77,20 @@ public class MainPageTest {
         products.itemList.get(0).shouldHave(text("Test.allTheThings() T-Shirt (Red)"));
         products.itemList.get(2).shouldHave(text("Sauce Labs Fleece Jacket"));
     }
+
+    @Test()
+    public static void lockedUsers(){
+        open("/");
+        lPage.username.sendKeys("locked_out_user");
+        lPage.password.sendKeys("secret_sauce");
+        lPage.login.click();
+        products.productList.shouldNotBe(visible);
+        lPage.epicSadfaceSorryThisUser.shouldHave(text("Epic sadface: Sorry, this user has been locked out.")
+        );
+    }
     @AfterTest
     public void tearDown() {
         closeWindow();
     }
+
 }
