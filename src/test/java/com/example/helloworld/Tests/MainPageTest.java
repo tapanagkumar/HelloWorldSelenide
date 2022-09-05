@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.example.helloworld.Pages.LoginPage;
 import com.example.helloworld.Pages.ProductsPage;
+import com.example.helloworld.Pages.YourCart;
 import org.testng.annotations.*;
 
 import static com.codeborne.selenide.Condition.text;
@@ -15,6 +16,7 @@ public class MainPageTest {
     //loginPage mainPage = new MainPage();
     static LoginPage lPage = new LoginPage();
     static ProductsPage products = new ProductsPage();
+    static YourCart cart = new YourCart();
 
 
     @BeforeClass
@@ -76,6 +78,21 @@ public class MainPageTest {
         products.sortList.should(CollectionCondition.sizeGreaterThan(0));
         products.itemList.get(0).shouldHave(text("Test.allTheThings() T-Shirt (Red)"));
         products.itemList.get(2).shouldHave(text("Sauce Labs Fleece Jacket"));
+    }
+
+    @Test
+    void buyProducts(){
+        products.productList.shouldHave(text("PRODUCTS"));
+        products.addBackpackToCartSauceLabs.click();
+        products.addBikeLightToCartSauceLabs.click();
+        products.removeSauceLabsBackpack.shouldBe(visible);
+        products.removeSauceLabsBikeLight.shouldBe(visible);
+        products.shoppingCartLink.click();
+        cart.yourCartTitle.shouldHave(text("Your Cart"));
+        cart.sauceLabsBackpackInventoryItem3.should(CollectionCondition.exactTexts("Sauce Labs Backpack"));
+        cart.sauceLabsBikeLightInventory.should(CollectionCondition.exactTexts("Sauce Labs Bike Light"));
+        //cart.sauceLabsInventoryItem.shouldHave(text("Sauce Labs Bike Light"));
+
     }
 
     @AfterTest

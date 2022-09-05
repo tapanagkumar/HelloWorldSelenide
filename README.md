@@ -1,2 +1,2 @@
 # HelloWorldSelenide
-[![HelloWorldSelenide Actions Status](https://github.com/tapanagkumar/HelloWorldSelenide/workflows/Tests/badge.svg)](https://github.com/tapanagkumar/HelloWorldSelenide/actions)
+[![Tests](https://github.com/tapanagkumar/HelloWorldSelenide/actions/workflows/maven.yml/badge.svg)](https://github.com/tapanagkumar/HelloWorldSelenide/actions/workflows/maven.yml)
